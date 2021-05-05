@@ -8,7 +8,7 @@ import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons';
 import 'prismjs/themes/prism-okaidia.css';
 
 const App = () => {
-  const containerRef = useOverflowCue();
+  const containerRef = useOverflowCue(4);
   
   useEffect(() => {
     Prism.highlightAll();
@@ -25,8 +25,8 @@ const App = () => {
       </header>
       <section className="hero">
         <article>
-          <h2>Lorem ipsum doler sit amet.</h2>
-          <p>Aenean in elit at ipsum scelerisque venenatis at ut dolor. Integer lobortis laoreet sodales. Aenean quis lacus ligula. Morbi pharetra faucibus lacus, sed commodo quam elementum ut. Vestibulum aliquam nisi metus, ornare molestie sem pellentesque a. Vivamus mi nisl, feugiat id elit et, consectetur tincidunt turpis.</p>
+          <h2>Truncate the text of an overflowing item to give a visual cue that the container is scrollable.</h2>
+          <p>Yes, you could use gradients or other visual cues, but sometimes we just want to keep it nice and clean. This is a simple little react hook that takes a set of horizontal overflowing items, such as tabs, and ensures an item is cropped appropriately to indicate the container is scrollable. Use it however you like and feel free to contribute enhancements, report bugs or just leave comments on GitHub.</p>
           <a className="button" href="https://github.com/chadspencer/overflowcue" target="_blank"><FontAwesomeIcon icon={faGithub} /> <span>View Documentation</span></a>
           <div className="code-window">
             <div className="dots">
@@ -64,32 +64,33 @@ const App = () => {
       <section>
         <article>
           <h3>Example</h3>
-          <p>The most common use case I've ran into for needing this component is to conditionally render shadows on a container. Having shadows on a scrollable container subtly let's the user know what to do, especially when scrollbars are not present. It's really nice to hide those shadows when you're at the start or end of the container too.</p>
-          <p>A little something like this:</p>
+          <p>In scenarios where we have overlfowing items with no visible scrollbar, we need a way to indicate that the container is scrollable. Specifically with tab treatments, similar to Material Design's <a href="https://material.io/components/tabs#scrollable-tabs" target="_blank">scrollable tabs</a>, the horizontal padding often ends up creating gutters where it is not clear to the user that there are additional tabs to scroll to. Rather than adding an offset at the beginning, with this utility we're able to detect when this problem is occuring and add just enough horizontal space to overcome the confusion.</p>
+          <p>Resize the window, you'll see.</p>
           <div className="example">
             <nav ref={containerRef}>
-              <a href="">Item</a>
+              <a href="">An Item</a>
               <a href="">Another Item</a>
               <a href="">Short Item</a>
               <a href="">Really Long Item</a>
-              <a href="">Item</a>
+              <a href="">An Item</a>
               <a href="">Another Item</a>
               <a href="">Short Item</a>
               <a href="">Really Long Item</a>
-              <a href="">Item</a>
+              <a href="">An Item</a>
               <a href="">Another Item</a>
               <a href="">Short Item</a>
               <a href="">Really Long Item</a>
-              <a href="">Item</a>
+              <a href="">An Item</a>
               <a href="">Another Item</a>
               <a href="">Short Item</a>
               <a href="">Really Long Item</a>
-              <a href="">Item</a>
+              <a href="">An Item</a>
               <a href="">Another Item</a>
               <a href="">Short Item</a>
               <a href="">Really Long Item</a>
             </nav>
           </div>
+          <p>We did it! Magic right? The text is always cropped, just a little, just enough.</p>
         </article>
       </section>
       <footer>

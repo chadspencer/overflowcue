@@ -52,7 +52,7 @@ var useOverflowCue = function useOverflowCue(bufferValue) {
       var itemLeftEdge = containerWidth - _item.offsetLeft;
       var itemRightEdge = containerWidth - (_item.offsetLeft + _item.offsetWidth);
       var alreadyCropped = itemLeftEdge > itemPadding + buffer && itemRightEdge < -(itemPadding + buffer);
-      console.log(alreadyCropped);
+
       if (!alreadyCropped) {
         for (var _index2 = 0; _index2 < items.length; _index2++) {
           var _item3 = items[_index2];
