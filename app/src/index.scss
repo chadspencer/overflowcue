@@ -38,10 +38,9 @@ header {
 }
 
 section {
-  color: #524745;
   padding: 200px 0;
   &.hero {
-    background: #f5edec;
+    background: #ff8181;
     text-align: center;
   }
   article {
@@ -50,7 +49,7 @@ section {
     width: 90%;
   }
   h2 {
-    color: #df5441;
+    color: white;
     font-size: 40px;
     font-weight: 800;
     line-height: 50px;
@@ -58,7 +57,6 @@ section {
     padding: 0;
   }
   h3 {
-    color: #df5441;
     font-size: 30px;
     font-weight: 800;
     line-height: 40px;
@@ -75,7 +73,7 @@ section {
     align-items: center;
     background: white;
     border-radius: 4px;
-    color: #df5441;
+    color: black;
     display: inline-flex;
     font-size: 30px;
     padding: 8px 16px;
@@ -95,7 +93,7 @@ section {
   background-color: #272822;
   border-radius: 8px;
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1);
-  margin: 60px 0 0 0;
+  margin: 60px 0 -300px 0;
   min-height: 400px;
   padding: 20px;
   text-align: left;
@@ -126,119 +124,34 @@ section {
 }
 
 .example {
-  border-radius: 8px;
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
+  left: 50%;
   margin: 0 auto;
-  max-width: 500px;
-  > div {
-    padding: 20px;
-    text-align: center;
-    nav {
-      border-top: 1px solid #f8f9fa;
-      margin: 20px -20px -20px -20px;
-      position: relative;
-      &:before {
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
-        content: '';
-        display: block;
-        height: 100%;
-        left: 0;
-        opacity: 1;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        width: 20px;
-      }
-      &:after {
-        background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
-        content: '';
-        display: block;
-        height: 100%;
-        opacity: 1;
-        pointer-events: none;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 20px;
-      }
-      &.at-left {
-        &:before {
-          opacity: 0;
-        }
-      }
-      &.at-right {
-        &:after {
-          opacity: 0;
-        }
-      }
-      span {
-        display: flex;
-        overflow: auto;
-        width: 100%;
-      }
-      a {
-        color: #adb5bd;
-        display: block;
-        font-size: 16px;
-        line-height: 20px;
-        padding: 20px;
-        text-decoration: none;        
-        white-space: nowrap;
-      }
+  position: relative;
+  text-align: right;
+  transform: translateX(-50%);
+  width: 100vw;
+  nav {
+    display: flex;
+    overflow: auto;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    scrollbar-width: none;
+    width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
     }
-    &:nth-of-type(2) {
-      background: #f8f9fa;
-      height: 600px;
-      padding: 0;
-      position: relative;
-      text-align: left;
-      &:before {
-        background: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
-        content: '';
-        display: block;
-        height: 20px;
-        left: 0;
-        opacity: 1;
-        pointer-events: none;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-      &:after {
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
-        bottom: 0;
-        content: '';
-        display: block;
-        height: 20px;
-        left: 0;
-        opacity: 1;
-        pointer-events: none;
-        position: absolute;
-        width: 100%;
-      }
-      &.at-top {
-        &:before {
-          opacity: 0;
-        }
-      }
-      &.at-bottom {
-        &:after {
-          opacity: 0;
-        }
-      }
-      div {
-        box-sizing: border-box;
-        height: 100%;
-        overflow: auto;
-        padding: 20px;
-      }
+    a {
+      color: black;
+      display: block;
+      font-size: 16px;
+      line-height: 20px;
+      padding: 20px 10px;
+      text-align: center;
+      text-decoration: none;        
+      white-space: nowrap;
     }
-  }
-  p {
-    font-size: 16px;
-    line-height: 30px;
   }
 }
 

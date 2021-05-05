@@ -1,48 +1,60 @@
 import { useEffect, useRef } from 'react';
 
-const useOverflowCue = () => {
+const useOverflowCue = (bufferValue) => {
   const container = useRef(null);
 
   useEffect(() => {
     setItemWidths();
+
     window.addEventListener('resize', setItemWidths);
 
     return () => {
       window.removeEventListener('resize', setItemWidths);
     };
-  }, []);
+  });
 
   const setItemWidths = () => {
-    const isFlex = container.current.style.display === 'flex';
-    if (isFlex) {
-      container.current.style.flexBasis = 'unset';
-    } else {
-      container.current.style.width = 'unset';
-    };
-
+    const items = container.current.childNodes;
     const scrollWidth = container.current.scrollWidth;
-    const width = container.current.offsetWidth;
-    const tabs = container.current.childNodes;
+    const containerWidth = container.current.offsetWidth;
+    const buffer = bufferValue ? bufferValue : 0;
 
-    if (scrollWidth > width) {
+    for (let index = 0; index < items.length; index++) {
+      const item = items[index];
+
+      item.style.removeProperty('padding-left');
+      item.style.removeProperty('padding-right');
+    }
+
+    if (scrollWidth > containerWidth) {
       let count = null;
       
-      for (let index = 0; index <= tabs.length; index++) {
-        const item = tabs[index];
-        if (item.offsetLeft + item.offsetWidth > width) {
+      for (let index = 0; index < items.length; index++) {
+        const item = items[index];
+        if (item.offsetLeft + item.offsetWidth > containerWidth) {
           count = index;
           break;
         }
       }
+      const item = items[count];
 
-      const tabWidth = width / count;
-      const computedTabWidth = `${tabWidth + (tabWidth / (count * 2))}px`;
+      if (!item) {
+        return;
+      }
 
-      if (isFlex) {
-        container.current.style.flexBasis = computedTabWidth;
-      } else {
-        container.current.style.flexBasis = computedTabWidth;
-      };
+      const itemPadding = Number(getComputedStyle(item, null).paddingLeft.replace('px', ''));
+      const itemLeftEdge = containerWidth - item.offsetLeft;
+      const itemRightEdge = containerWidth - (item.offsetLeft + item.offsetWidth);
+      const alreadyCropped = itemLeftEdge > (itemPadding + buffer) && itemRightEdge < -(itemPadding + buffer);
+      console.log(alreadyCropped);
+      if (!alreadyCropped) {
+        for (let index = 0; index < items.length; index++) {
+          const item = items[index];
+          const itemPadding = Number(getComputedStyle(item, null).paddingLeft.replace('px', ''));
+          item.style.paddingLeft = `${itemPadding + (itemPadding / (count - 1))}px`;
+          item.style.paddingRight = `${itemPadding + (itemPadding / (count - 1))}px`;
+        }
+      }
     }
   };
 

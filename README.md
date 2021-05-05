@@ -13,17 +13,29 @@ The hook first determines if the items are overflowing their container on load a
 ```
 import { useOverflowCue } from 'overflow-cue';
 
-const container = useOverflowCue();
+const container = useOverflowCue(buffer);
 ```
 
+An optional buffer number can be set to give a little more fine-tuned control over how much of the cropped text is shown.
+
 A <code>ref</code> is required on the wrapping container element in order for the hook to be applied. Therefore functional components will work only when using <code>forwardRef</code>. If you are consuming a functional component that you cannot add <code>forwardRef</code> to, you must use a wrapper element to attach the <code>ref</code> to and style that container accordingly.
+
+<b>Note:</b> When the item text length is short there are occasional scenarios where the cropped text won't show properly. This happens when the total horizontal padding is greater than the text length of an item. In these situations, reduce the horizontal padding of the items.
+
+<h4>Parameters</h4>
+
+```
+useBottomScrollListener(
+  buffer?: number
+);
+```
 
 <h2>Example</h2>
 
 ```
 import { useOverflowCue } from 'overflow-cue';
 
-const tabs = useOverflowCue();
+const tabs = useOverflowCue(4);
 
 return (
   <nav ref="tabs">
@@ -45,8 +57,8 @@ package.json
 CHANGELOG.md
 README.md
 /dist
-  └───index.js - 1.08 KB
-  └───cue.js - 5.12 KB
+  └───index.js - 0.36 KB
+  └───cue.js - 2 KB
 ````
 
 <h2>Dependencies</h2>

@@ -67,23 +67,28 @@ const App = () => {
           <p>The most common use case I've ran into for needing this component is to conditionally render shadows on a container. Having shadows on a scrollable container subtly let's the user know what to do, especially when scrollbars are not present. It's really nice to hide those shadows when you're at the start or end of the container too.</p>
           <p>A little something like this:</p>
           <div className="example">
-            <div>
-              Header
-              <nav>
-                <span ref={containerRef}>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                  <a href="#">Nav Item</a>
-                </span>
-              </nav>
-            </div>
+            <nav ref={containerRef}>
+              <a href="">Item</a>
+              <a href="">Another Item</a>
+              <a href="">Short Item</a>
+              <a href="">Really Long Item</a>
+              <a href="">Item</a>
+              <a href="">Another Item</a>
+              <a href="">Short Item</a>
+              <a href="">Really Long Item</a>
+              <a href="">Item</a>
+              <a href="">Another Item</a>
+              <a href="">Short Item</a>
+              <a href="">Really Long Item</a>
+              <a href="">Item</a>
+              <a href="">Another Item</a>
+              <a href="">Short Item</a>
+              <a href="">Really Long Item</a>
+              <a href="">Item</a>
+              <a href="">Another Item</a>
+              <a href="">Short Item</a>
+              <a href="">Really Long Item</a>
+            </nav>
           </div>
         </article>
       </section>
