@@ -1,0 +1,39 @@
+{
+  "name": "overflow-cue",
+  "version": "0.0.1",
+  "description": "A react hook that takes a set of horizontal overflowing items, such as tabs, and ensures an item is cropped appropriately to indicate the container is scrollable.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chadspencer/overflowcue.git"
+  },
+  "keywords": [
+    "react",
+    "hook",
+    "scrolling",
+    "tab",
+    "overflow",
+    "cue",
+    "resize",
+    "listener"
+  ],
+  "author": "Chad Spencer",
+  "license": "MIT",
+  "homepage": "https://chadspencer.dev/overflowcue/",
+  "bugs": {
+    "url": "https://github.com/chadspencer/overflowcue/issues"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "package.json"
+  ],
+  "main": "dist/index.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "compile": "babel src -d dist"
+  }
+}
