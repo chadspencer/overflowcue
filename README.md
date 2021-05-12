@@ -13,12 +13,12 @@ The hook first determines if the items are overflowing their container on load a
 ```
 import { useOverflowCue } from 'overflow-cue';
 
-const container = useOverflowCue(buffer);
+const container = useOverflowCue(padding, buffer, selector);
 ```
 
-An optional buffer number can be set to give a little more fine-tuned control over how much of the cropped text is shown.
+The padding param is required and should be set to the horiztonal padding value of the item. An optional buffer number can be set to give more fine-tuned control over how much of the cropped text is shown. Lastly, an optional selector can be used to target a nested element that should receive the padding adjustments. This selector must be a valid CSS selector.
 
-A <code>ref</code> is required on the wrapping container element in order for the hook to be applied. Therefore functional components will work only when using <code>forwardRef</code>. If you are consuming a functional component that you cannot add <code>forwardRef</code> to, you must use a wrapper element to attach the <code>ref</code> to and style that container accordingly.
+The hook must be assigned via use of a <code>ref</code>, therefore it can only be applied to a functional component when using <code>forwardRef</code>. If you are consuming a functional component that you cannot add <code>forwardRef</code> to, you must use a wrapper element to attach the <code>ref</code> to and style that container accordingly.
 
 <b>Note:</b> When the item text length is short there are occasional scenarios where the cropped text won't show properly. This happens when the total horizontal padding is greater than the text length of an item. In these situations, reduce the horizontal padding of the items.
 
@@ -26,7 +26,9 @@ A <code>ref</code> is required on the wrapping container element in order for th
 
 ```
 useBottomScrollListener(
+  padding: number
   buffer?: number
+  selector?: string
 );
 ```
 
@@ -35,7 +37,7 @@ useBottomScrollListener(
 ```
 import { useOverflowCue } from 'overflow-cue';
 
-const tabs = useOverflowCue(4);
+const tabs = useOverflowCue(20, 4);
 
 return (
   <nav ref="tabs">

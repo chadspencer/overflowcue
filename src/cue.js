@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const useOverflowCue = (bufferValue) => {
+const useOverflowCue = (paddingValue, bufferValue, selector) => {
   const container = useRef(null);
 
   useEffect(() => {
@@ -20,7 +20,11 @@ const useOverflowCue = (bufferValue) => {
     const buffer = bufferValue ? bufferValue : 0;
 
     for (let index = 0; index < items.length; index++) {
-      const item = items[index];
+      let item = items[index];
+
+      if (selector) {
+        item = item.querySelector(selector);
+      }
 
       item.style.removeProperty('padding-left');
       item.style.removeProperty('padding-right');
@@ -42,15 +46,19 @@ const useOverflowCue = (bufferValue) => {
         return;
       }
 
-      const itemPadding = Number(getComputedStyle(item, null).paddingLeft.replace('px', ''));
+      const itemPadding = paddingValue ? paddingValue : 0;
       const itemLeftEdge = containerWidth - item.offsetLeft;
       const itemRightEdge = containerWidth - (item.offsetLeft + item.offsetWidth);
       const alreadyCropped = itemLeftEdge > (itemPadding + buffer) && itemRightEdge < -(itemPadding + buffer);
 
       if (!alreadyCropped) {
         for (let index = 0; index < items.length; index++) {
-          const item = items[index];
-          const itemPadding = Number(getComputedStyle(item, null).paddingLeft.replace('px', ''));
+          let item = items[index];
+
+          if (selector) {
+            item = item.querySelector(selector);
+          }
+
           item.style.paddingLeft = `${itemPadding + (itemPadding / (count - 1))}px`;
           item.style.paddingRight = `${itemPadding + (itemPadding / (count - 1))}px`;
         }

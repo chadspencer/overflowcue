@@ -8,7 +8,7 @@ import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons';
 import 'prismjs/themes/prism-okaidia.css';
 
 const App = () => {
-  const containerRef = useOverflowCue(4);
+  const containerRef = useOverflowCue(15, 4);
   
   useEffect(() => {
     Prism.highlightAll();
@@ -20,13 +20,13 @@ const App = () => {
         <h1>Overflow Cue</h1>
         <nav>
           <a href="https://github.com/chadspencer/overflowcue" target="_blank"><FontAwesomeIcon icon={faGithub} /></a>
-          <a href="https://www.npmjs.com/package/overflowcue" target="_blank"><FontAwesomeIcon icon={faNpm} /></a>
+          <a href="https://www.npmjs.com/package/overflow-cue" target="_blank"><FontAwesomeIcon icon={faNpm} /></a>
         </nav>
       </header>
       <section className="hero">
         <article>
           <h2>Truncate the text of an overflowing item to give a visual cue that the container is scrollable.</h2>
-          <p>Yes, you could use gradients or other visual cues, but sometimes we just want to keep it nice and clean. This is a simple little react hook that takes a set of horizontal overflowing items, such as tabs, and ensures an item is cropped appropriately to indicate the container is scrollable. Use it however you like and feel free to contribute enhancements, report bugs or just leave comments on GitHub.</p>
+          <p>Yes, I know you could use gradients or other visual cues, but sometimes we just want to keep it nice and clean. This is a simple little react hook that takes a set of horizontal overflowing items, such as tabs, and ensures an item is cropped appropriately to indicate the container is scrollable. Use it however you like and feel free to contribute enhancements, report bugs or just leave comments on GitHub.</p>
           <a className="button" href="https://github.com/chadspencer/overflowcue" target="_blank"><FontAwesomeIcon icon={faGithub} /> <span>View Documentation</span></a>
           <div className="code-window">
             <div className="dots">
@@ -44,7 +44,7 @@ yarn add overflow-cue
 import { useOverflowCue } from 'overflow-cue';
 
 const App = () => {
-  const tabs = useOverflowCue();
+  const tabs = useOverflowCue(padding, buffer, selector);
 
   return (
     <nav ref="tabs">

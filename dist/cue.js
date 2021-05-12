@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _react = require('react');
 
-var useOverflowCue = function useOverflowCue(bufferValue) {
+var useOverflowCue = function useOverflowCue(paddingValue, bufferValue, selector) {
   var container = (0, _react.useRef)(null);
 
   (0, _react.useEffect)(function () {
@@ -28,6 +28,10 @@ var useOverflowCue = function useOverflowCue(bufferValue) {
     for (var index = 0; index < items.length; index++) {
       var item = items[index];
 
+      if (selector) {
+        item = item.querySelector(selector);
+      }
+
       item.style.removeProperty('padding-left');
       item.style.removeProperty('padding-right');
     }
@@ -48,7 +52,7 @@ var useOverflowCue = function useOverflowCue(bufferValue) {
         return;
       }
 
-      var itemPadding = Number(getComputedStyle(_item, null).paddingLeft.replace('px', ''));
+      var itemPadding = paddingValue ? paddingValue : 0;
       var itemLeftEdge = containerWidth - _item.offsetLeft;
       var itemRightEdge = containerWidth - (_item.offsetLeft + _item.offsetWidth);
       var alreadyCropped = itemLeftEdge > itemPadding + buffer && itemRightEdge < -(itemPadding + buffer);
@@ -56,9 +60,13 @@ var useOverflowCue = function useOverflowCue(bufferValue) {
       if (!alreadyCropped) {
         for (var _index2 = 0; _index2 < items.length; _index2++) {
           var _item3 = items[_index2];
-          var _itemPadding = Number(getComputedStyle(_item3, null).paddingLeft.replace('px', ''));
-          _item3.style.paddingLeft = _itemPadding + _itemPadding / (count - 1) + 'px';
-          _item3.style.paddingRight = _itemPadding + _itemPadding / (count - 1) + 'px';
+
+          if (selector) {
+            _item3 = _item3.querySelector(selector);
+          }
+
+          _item3.style.paddingLeft = itemPadding + itemPadding / (count - 1) + 'px';
+          _item3.style.paddingRight = itemPadding + itemPadding / (count - 1) + 'px';
         }
       }
     }

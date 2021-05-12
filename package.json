@@ -1,6 +1,6 @@
 {
   "name": "overflow-cue",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "A react hook that takes a set of horizontal overflowing items, such as tabs, and ensures an item is cropped appropriately to indicate the container is scrollable.",
   "repository": {
     "type": "git",
